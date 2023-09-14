@@ -1,0 +1,37 @@
+<form id="gercpay_submit" name="gercpay_submit" action="{{ action }}" method="POST">
+    {% for key, value in fields %}
+      {% if value is iterable %}
+        {% for ar_key, ar_value in value %}
+          <input type="hidden" name="{{ key }}[{{ ar_key }}]" value="{{ ar_value }}"/>
+        {% endfor %}
+      {% else %}
+        <input type="hidden" name="{{ key }}" value="{{ value }}"/>
+      {% endif %}
+    {% endfor %}
+    {% for value in prod_name %}
+        <input type="hidden" name="productName[]" value="{{ value }}"/>
+    {% endfor %}
+    {% for value in prod_price %}
+        <input type="hidden" name="productPrice[]" value="{{ value }}"/>
+    {% endfor %}
+    {% for value in prod_count %}
+        <input type="hidden" name="productCount[]" value="{{ value }}"/>
+    {% endfor %}
+    <div class="buttons">
+      <div class="pull-right">
+        <input type="submit" value="{{ button_confirm }}" id="button-confirm" class="btn btn-primary"/>
+      </div>
+    </div>
+</form>
+<script type="text/javascript">
+	$('#button-confirm').bind('click', function() {
+		$.ajax({
+			type: 'GET',
+			url: 'index.php?route=extension/payment/gercpay/confirm',
+			success: function () {
+				$('#gercpay_submit').submit();
+			}
+		});
+		return false;
+	});
+</script>

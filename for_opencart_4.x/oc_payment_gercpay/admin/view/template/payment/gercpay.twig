@@ -1,0 +1,145 @@
+{{ header }} {{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-end">
+        <button type="submit" form="form-payment" data-bs-toggle="tooltip" data-bs-original-title="{{ button_save }}"
+                class="btn btn-primary"><i class="fa-solid fa-save"></i></button>
+        <a href="{{ cancel }}" data-bs-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-light">
+          <i class="fa-solid fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+      <div class="alert alert-info">
+        <i class="fa-solid fa-circle-exclamation"></i> {{ error_warning }}
+      </div>
+    {% endif %}
+      <div class="card">
+        <div class="card-header"><i class="fa-solid fa-pencil"></i> {{ text_edit }}</div>
+        <div class="card-body">
+          <form action="{{ save }}" method="post" id="form-payment" data-oc-toggle="ajax">
+
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="payment_gercpay_status">{{ entry_status }}</label>
+              <div class="col-sm-10">
+                <div class="form-check form-switch form-switch-lg">
+                  <input type="hidden" name="payment_gercpay_status" value="0"/>
+                  <input type="checkbox" name="payment_gercpay_status" value="1" id="payment_gercpay_status"
+                         class="form-check-input"{% if payment_gercpay_status %} checked{% endif %}/>
+                </div>
+                <div class="form-text">{{ help_status }}</div>
+              </div>
+            </div>
+
+            <div class="row mb-3 required">
+              <label class="col-sm-2 col-form-label" for="input-payment-gercpay-merchant">{{ entry_merchant }}</label>
+              <div class="col-sm-10">
+                <input type="text" id="input-payment-gercpay-merchant" name="payment_gercpay_merchant"
+                       value="{{ payment_gercpay_merchant }}" class="form-control"/>
+                <div class="form-text">{{ help_merchant }}</div>
+                <div id="error-payment-gercpay-merchant" class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <div class="row mb-3 required">
+              <label class="col-sm-2 col-form-label" for="input-payment-gercpay-secretkey">{{ entry_secretkey }}</label>
+              <div class="col-sm-10">
+                <input type="text" id="input-payment-gercpay-secretkey" name="payment_gercpay_secretkey"
+                       value="{{ payment_gercpay_secretkey }}" class="form-control"/>
+                <div class="form-text">{{ help_secretkey }}</div>
+                <div id="error-payment-gercpay-secretkey" class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <div class="row mb-3 required">
+              <label class="col-sm-2 col-form-label" for="input-payment-gercpay-order-status">{{ entry_order_status }}</label>
+              <div class="col-sm-10">
+                <select id="input-payment-gercpay-order-status" name="payment_gercpay_order_status" class="form-select">
+                  <option value="0">{{ default_placeholder }}</option>
+                  {% for order_status in order_statuses %}
+                    {% if order_status.order_status_id == payment_gercpay_order_status %}
+                      <option value="{{ order_status.order_status_id }}" selected>{{ order_status.name }}</option>
+                    {% else %}
+                      <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                <div class="form-text">{{ help_order_status }}</div>
+                <div id="error-payment-gercpay-order-status" class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <div class="row mb-3 required">
+              <label class="col-sm-2 col-form-label" for="input-payment-gercpay-order-reverse-status">
+                {{ entry_order_reverse_status }}</label>
+              <div class="col-sm-10">
+                <select id="input-payment-gercpay-order-reverse-status" name="payment_gercpay_order_reverse_status"
+                        class="form-select">
+                  <option value="0">{{ default_placeholder }}</option>
+                  {% for order_status in order_statuses %}
+                    {% if order_status.order_status_id == payment_gercpay_order_reverse_status %}
+                      <option value="{{ order_status.order_status_id }}" selected>{{ order_status.name }}</option>
+                    {% else %}
+                      <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                <div class="form-text">{{ help_order_reverse_status }}</div>
+                <div id="error-payment-gercpay-order-reverse-status" class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="input-payment-gercpay-language">{{ entry_language }}</label>
+              <div class="col-sm-10">
+                <select id="input-payment-gercpay-language" name="payment_gercpay_language" class="form-select">
+                  {% for payment_page_locale in allowed_payment_page_locales %}
+                    {% if payment_page_locale == payment_gercpay_language %}
+                      <option value="{{ payment_page_locale }}" selected>{{ payment_page_locale }}</option>
+                    {% else %}
+                      <option value="{{ payment_page_locale }}">{{ payment_page_locale }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                <div class="form-text">{{ help_language }}</div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="input-payment-gercpay-geo-zone-id">{{ entry_geo_zone }}</label>
+              <div class="col-sm-10">
+                <select id="input-payment-gercpay-geo-zone-id" name="payment_gercpay_geo_zone_id" class="form-select">
+                  <option value="0">{{ text_all_zones }}</option>
+                  {% for geo_zone in geo_zones %}
+                    {% if geo_zone.geo_zone_id == gercpay_geo_zone_id %}
+                      <option value="{{ geo_zone.geo_zone_id }}" selected>{{ geo_zone.name }}</option>
+                    {% else %}
+                      <option value="{{ geo_zone.geo_zone_id }}">{{ geo_zone.name }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                <div class="form-text"></div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="input-payment-gercpay-sort-order">{{ entry_sort_order }}</label>
+              <div class="col-sm-10">
+                <input type="text" id="input-payment-gercpay-sort-order" name="payment_gercpay_sort_order"
+                       value="{% if payment_gercpay_sort_order %}{{ payment_gercpay_sort_order }}{% else %}1{% endif %}" class="form-control"/>
+                <div class="form-text">{{ help_sort_order }}</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+{{ footer }}
