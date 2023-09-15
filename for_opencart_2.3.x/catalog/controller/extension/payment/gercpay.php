@@ -215,7 +215,7 @@ class Gercpay
 
     const SIGNATURE_SEPARATOR = ';';
 
-    const URL = "https://api.gercpay.com.ua/";
+    const URL = "https://api.gercpay.com.ua/api/";
 
     /**
      * @var string
