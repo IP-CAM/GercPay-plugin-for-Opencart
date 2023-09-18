@@ -2,7 +2,7 @@
 
 Creator: [GercPay](https://gercpay.com.ua)
 Tags: GercPay, OcStore, OpenСart, payment, payment gateway, credit card, Apple Pay, Google Pay
-Requires at least: OpenCart-3.0.2.0
+Requires at least: OCStore-3.0
 License: GNU GPL v3.0
 License URI: [License](https://opensource.org/licenses/GPL-3.0)
 
@@ -35,3 +35,4 @@ License URI: [License](https://opensource.org/licenses/GPL-3.0)
 Модуль готовий до роботи.
 
 *Модуль OcStore 3 протестований для роботи з OcStore 3.0.3.7 та PHP 7.4.*
+

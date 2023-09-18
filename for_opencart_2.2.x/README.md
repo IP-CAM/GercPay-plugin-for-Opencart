@@ -1,5 +1,11 @@
 # Модуль GercPay для OpenCart 2.2
 
+Creator: [GercPay](https://gercpay.com.ua)
+Tags: GercPay, OpenСart, payment, payment gateway, credit card, Apple Pay, Google Pay
+Requires at least: OpenCart-2.2
+License: GNU GPL v3.0
+License URI: [License](https://opensource.org/licenses/GPL-3.0)
+
 Цей модуль дозволить вам приймати платежі через платіжну систему **GercPay**
 
 ## Встановлення
@@ -19,3 +25,4 @@
 Модуль готовий до роботи.
 
 *Модуль протестований для роботи з OpenCart 2.2.0.0 та PHP 7.2.*
+

@@ -23,3 +23,4 @@ License URI: [License](https://opensource.org/licenses/GPL-3.0)
 Модуль готовий до роботи.
 
 *Модуль OpenCart 1.5 протестований для роботи з OpenCart 1.5.6 та PHP 5.6.3.*
+
