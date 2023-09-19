@@ -6,7 +6,7 @@ $_['heading_title'] = 'GercPay';
 $_['text_edit'] = 'Налаштування модуля';
 $_['text_extension'] = 'Модулі / Розширення';
 $_['text_payment'] = 'Оплата';
-$_['text_gercpay'] = '<a href="https://gercpay.com.ua" target="_blank" style="background: url(/image/payment/gercpay.svg) 0 0 no-repeat !important;"><img src="/image/payment/gercpay.png" alt="GercPay" title="GercPay"></a>';
+$_['text_gercpay'] = '<a href="https://gercpay.com.ua" target="_blank" style="background: url(/image/payment/gercpay.svg) 0 0/auto 100% no-repeat !important;"><img src="/image/payment/gercpay.png" alt="GercPay" title="GercPay"></a>';
 $_['text_success'] = 'Налаштування модуля оновлені';
 $_['text_pay'] = 'GercPay';
 $_['text_card'] = 'Кредитна картка';

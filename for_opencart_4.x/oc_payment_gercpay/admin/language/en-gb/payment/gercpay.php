@@ -5,7 +5,7 @@ $_['heading_title'] = 'GercPay';
 // Text
 $_['text_edit'] = 'Module settings';
 $_['text_payment'] = 'Payment';
-$_['text_gercpay'] = '<a href="https://gercpay.com.ua" target="_blank" style="background: url(/image/payment/gercpay.svg) 0 0 no-repeat !important;"><img src="/image/payment/gercpay.png" alt="GercPay" title="GercPay"></a>';
+$_['text_gercpay'] = '<a href="https://gercpay.com.ua" target="_blank" style="background: url(/image/payment/gercpay.svg) 0 0/auto 100% no-repeat !important;"><img src="/image/payment/gercpay.png" alt="GercPay" title="GercPay"></a>';
 $_['text_success'] = 'Settings updated';
 $_['text_pay'] = 'GercPay';
 $_['text_card'] = 'Credit Card';
